@@ -19,7 +19,10 @@ const stringCalculator = {
         if (negatives.length > 0) {
             throw new Error(`Negative numbers not allowed: ${negatives.join(', ')}`);
         }
-        return numbersArray.reduce((acc, number) => acc + parseInt(number), 0);
+
+        const validNumbers = numbersArray.filter(n => n <= 1000);
+
+        return validNumbers.reduce((acc, number) => acc + parseInt(number), 0);
     }
 
 }
