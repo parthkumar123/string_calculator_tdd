@@ -7,7 +7,7 @@ const stringCalculator = {
 
         if (numbers.includes(',')) {
             const numbersArray = numbers.split(',');
-            return parseInt(numbersArray[0]) + parseInt(numbersArray[1]);
+            return numbersArray.reduce((acc, number) => acc + parseInt(number), 0);
         }
         return parseInt(numbers);
     }

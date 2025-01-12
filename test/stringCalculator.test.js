@@ -13,4 +13,8 @@ describe('stringCalculator', () => {
     it('should return some of two numbers', () => {
         expect(stringCalculator.add('1,2')).toBe(3);
     });
+
+    it('should return some of multiple numbers', () => {
+        expect(stringCalculator.add('1,2,3')).toBe(6);
+    });
 });
