@@ -6,11 +6,19 @@ const stringCalculator = {
         if (!numbers) return 0;
 
         let delimiter = /,|\n/;
+
         if (numbers.startsWith("//")) {
-            const delimiterMatch = numbers.match(/^\/\/(.+)\n/);
+            const delimiterMatch = numbers.match(/^\/\/(\[.*?\])+\n/); // Match multiple delimiters in square brackets
             if (delimiterMatch) {
-                delimiter = new RegExp(delimiterMatch[1]);
+                const delimiters = [...delimiterMatch[0].matchAll(/\[(.*?)\]/g)].map(match => match[1]);
+                delimiter = new RegExp(delimiters.map(delim => delim.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join("|"));
                 numbers = numbers.slice(delimiterMatch[0].length);
+            } else {
+                const singleDelimiterMatch = numbers.match(/^\/\/(.+)\n/);
+                if (singleDelimiterMatch) {
+                    delimiter = new RegExp(singleDelimiterMatch[1]);
+                    numbers = numbers.slice(singleDelimiterMatch[0].length);
+                }
             }
         }
 
