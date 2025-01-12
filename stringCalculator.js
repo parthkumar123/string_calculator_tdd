@@ -13,7 +13,12 @@ const stringCalculator = {
                 numbers = numbers.slice(delimiterMatch[0].length);
             }
         }
-        const numbersArray = numbers.split(delimiter);
+
+        const numbersArray = numbers.split(delimiter).map(Number);
+        const negatives = numbersArray.filter(n => n < 0);
+        if (negatives.length > 0) {
+            throw new Error(`Negative numbers not allowed: ${negatives.join(', ')}`);
+        }
         return numbersArray.reduce((acc, number) => acc + parseInt(number), 0);
     }
 
