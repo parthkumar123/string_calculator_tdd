@@ -21,4 +21,8 @@ describe('stringCalculator', () => {
     it('Allow new line between numbers instead of commas', () => {
         expect(stringCalculator.add('1\n2,3')).toBe(6);
     });
+
+    it('Allow different delimiters', () => {
+        expect(stringCalculator.add('//;\n1;2')).toBe(3);
+    });
 });

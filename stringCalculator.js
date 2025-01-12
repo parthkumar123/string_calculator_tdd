@@ -5,13 +5,16 @@ const stringCalculator = {
     add: (numbers) => {
         if (!numbers) return 0;
 
-        const delimiter = /,|\n/;
-
-        if (delimiter.test(numbers)) {
-            const numbersArray = numbers.split(delimiter);
-            return numbersArray.reduce((acc, number) => acc + parseInt(number), 0);
+        let delimiter = /,|\n/;
+        if (numbers.startsWith("//")) {
+            const delimiterMatch = numbers.match(/^\/\/(.+)\n/);
+            if (delimiterMatch) {
+                delimiter = new RegExp(delimiterMatch[1]);
+                numbers = numbers.slice(delimiterMatch[0].length);
+            }
         }
-        return parseInt(numbers);
+        const numbersArray = numbers.split(delimiter);
+        return numbersArray.reduce((acc, number) => acc + parseInt(number), 0);
     }
 
 }
