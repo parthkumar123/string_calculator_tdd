@@ -38,7 +38,7 @@ describe('stringCalculator', () => {
         expect(stringCalculator.add("//[***]\n1***2***3")).toBe(6);
     });
 
-    test('Delimeters can be of any length', () => {
+    test('Allow multiple delimeters', () => {
         expect(stringCalculator.add("//[*][%]\n1*2%3")).toBe(6);
     });
 });
