@@ -33,4 +33,8 @@ describe('stringCalculator', () => {
     test('Numbers that are greater than 1000 should be ignored', () => {
         expect(stringCalculator.add("1001,3")).toBe(3);
     });
+
+    test('Delimeters can be of any length', () => {
+        expect(stringCalculator.add("//[***]\n1***2***3")).toBe(6);
+    });
 });
