@@ -1,0 +1,18 @@
+{
+  "name": "string_calculator_tdd",
+  "version": "1.0.0",
+  "description": "string calculator using tdd principle.",
+  "main": "stringCalculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "string_calculator_tdd"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
