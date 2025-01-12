@@ -5,8 +5,10 @@ const stringCalculator = {
     add: (numbers) => {
         if (!numbers) return 0;
 
-        if (numbers.includes(',')) {
-            const numbersArray = numbers.split(',');
+        const delimiter = /,|\n/;
+
+        if (delimiter.test(numbers)) {
+            const numbersArray = numbers.split(delimiter);
             return numbersArray.reduce((acc, number) => acc + parseInt(number), 0);
         }
         return parseInt(numbers);
